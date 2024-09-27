@@ -1,12 +1,16 @@
-import React from "react";
-import Slider from "./slider";
-import Cardskerala from "./Cardskerala";
+import Cardskerala from './cardskerala'
 
-export default function homepage(){
+import Slider from './slider';
+
+function Homepage(){
     return(
         <>
         <Slider/>
+        <br />
         <Cardskerala/>
+        
         </>
     )
 }
+
+export default Homepage;

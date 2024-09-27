@@ -9,9 +9,13 @@ import svp from './images/svp.jpeg';
 import  alpp from './images/alp.jpeg';
 import tvm from './images/tvm.jpeg';
 import { Container, Row,Col } from 'react-bootstrap';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import CommentContext from './commentProvider';
+import { useNavigate } from 'react-router-dom';
 function Cardskerala(){
     const [title,setTitle]=useState("")
+    const nav = useNavigate()
+    const {comment} = useContext(CommentContext)
 
     const record=[
         {idno:1,title:'kochi',description:'Kochi (also known as Cochin) is a city in southwest India coastal Kerala state. It has been a port since 1341, when a flood carved out its harbor and opened it to Arab, Chinese and European merchants. Sites reflecting those influences include Fort Kochi, a settlement with tiled colonial bungalows and diverse houses of worship. Cantilevered Chinese fishing nets, typical of Kochi, have been in use for centuries.',imageUrl:k},
@@ -26,14 +30,14 @@ function Cardskerala(){
     return(
         <>
        <Container className="margint">
-        <Row className='mb-3'> 
+        {/* <Row className='mb-3'> 
             <Col>
              <input type="text" name="sch" onChange={(e)=>{
                    setTitle(e.target.value)
              }} className='form-control' placeholder='enter the place name '/>
              
             </Col>
-        </Row>
+        </Row> */}
         <Row className='mb-3'>
             <Col>
             <Button variant='success' onClick={()=>{
@@ -63,7 +67,7 @@ function Cardskerala(){
                  record.length>0?  
                 
                  record.filter((rec)=>{
-                    return(rec.title.toLocaleLowerCase().match(title.toLocaleLowerCase()))
+                    return(rec.title.toLocaleLowerCase().match(comment.toLocaleLowerCase()))
                  })
 
              
